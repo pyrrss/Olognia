@@ -44,9 +44,7 @@ int main(){
 		heroe.health -= minions.front().damage;
 		minions.front().hits += 1;
 		if(minions.front().hits == 2 && minions.front().CANO == 1){
-			minions.front().health -= 1;
-			minions.front().damage -= 1;
-			minions.front().CANO = 0;
+			minions.front() = {minions.front().health - 1, minions.front().damage - 1, 0, 0 ,0};
 			minions.push_front(minions.front());
 		}
 		if(minions.front().health <= 0){
