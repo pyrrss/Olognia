@@ -1,9 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include <string>
 #include <deque>
-
-using namespace std;
 
 struct Mob{
 	int health = 0;
@@ -16,31 +13,29 @@ struct Mob{
 
 int main(){
 	int n;
-	string auxString;
-
-	deque<Mob> minions;
+	std::deque<Mob> minions;
 	Mob heroe;
 
-	cout << "Ingrese la vida del mechon = ";
-	cin >> heroe.health;
+	std::cout << "Ingrese la vida del mechon = ";
+	std::cin >> heroe.health;
 
-	cout << "Ingrese la cantidad de esbirros = ";
-	cin >> n;
+	std::cout << "Ingrese la cantidad de esbirros = ";
+	std::cin >> n;
 
 	for(int i = 0; i < n; i++) minions.push_front(Mob{0,0,0,0,0,0});
 	
-	cout << "Indique la vida de los esbirros = ";
-	for (int i = 0; i < n; i++) cin >> minions[i].health;
+	std::cout << "Indique la vida de los esbirros = ";
+	for (int i = 0; i < n; i++) std::cin >> minions[i].health;
 
-	cout << "Indique el daño de los esbirros = ";
-	for (int i = 0; i < n; i++) cin >> minions[i].damage;
+	std::cout << "Indique el daño de los esbirros = ";
+	for (int i = 0; i < n; i++) std::cin >> minions[i].damage;
 
-	cout << "Indique si son CANO = ";
-	for (int i = 0; i < n; i++) cin >> minions[i].CANO;
+	std::cout << "Indique si son CANO = ";
+	for (int i = 0; i < n; i++) std::cin >> minions[i].CANO;
 
 	while(!minions.empty()){
-		heroe.acomulatedDamage += min(heroe.damage, minions.front().health);
-		minions.front().health -= min(heroe.damage, minions.front().health);
+		heroe.acomulatedDamage += std::min(heroe.damage, minions.front().health);
+		minions.front().health -= std::min(heroe.damage, minions.front().health);
 		heroe.health -= minions.front().damage;
 		minions.front().hits += 1;
 		if(minions.front().hits == 2 && minions.front().CANO == 1){
@@ -55,9 +50,9 @@ int main(){
 			}
 		}
 		if(heroe.health <= 0){
-			cout << "RIP mechon" << endl;
+			std::cout << "RIP mechon" << std::endl;
 			return 0;
 		}
 	}
-	cout << heroe.acomulatedDamage << endl << "EZ pizi" << endl;	
+	std::cout << heroe.acomulatedDamage << std::endl << "EZ pizi" << std::endl;	
 };
