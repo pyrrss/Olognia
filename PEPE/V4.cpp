@@ -27,11 +27,8 @@ int main(){
 	cout << "Ingrese la cantidad de esbirros = ";
 	cin >> n;
 
-	for(int i = 0; i < n; i++){
-		Mob minion;
-		minions.push_front(minion);
-	}
-
+	for(int i = 0; i < n; i++) minions.push_front(Mob{0,0,0,0,0,0});
+	
 	cout << "Indique la vida de los esbirros = ";
 	for (int i = 0; i < n; i++) cin >> minions[i].health;
 
@@ -39,13 +36,11 @@ int main(){
 	for (int i = 0; i < n; i++) cin >> minions[i].damage;
 
 	cout << "Indique si son CANO = ";
-	for (int i = 0; i < n; i++) {
-		cin >> minions[i].CANO;
-	}
+	for (int i = 0; i < n; i++) cin >> minions[i].CANO;
 
 	while(!minions.empty()){
-		minions.front().health -= heroe.damage;
-		heroe.acomulatedDamage += heroe.damage;
+		heroe.acomulatedDamage += min(heroe.damage, minions.front().health);
+		minions.front().health -= min(heroe.damage, minions.front().health);
 		heroe.health -= minions.front().damage;
 		minions.front().hits += 1;
 		if(minions.front().hits == 2 && minions.front().CANO == 1){
@@ -55,7 +50,6 @@ int main(){
 			minions.push_front(minions.front());
 		}
 		if(minions.front().health <= 0){
-			heroe.acomulatedDamage += minions.front().health;
 			minions.pop_front();
 			heroe.enemiesDefeated += 1;
 			if (heroe.enemiesDefeated % 5 == 0){
