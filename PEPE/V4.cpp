@@ -16,21 +16,14 @@ int main(){
 	std::deque<Mob> minions;
 	Mob heroe;
 
-	std::cout << "Ingrese la vida del mechon = ";
 	std::cin >> heroe.health;
 
-	std::cout << "Ingrese la cantidad de esbirros = ";
 	std::cin >> n;
 
 	for(int i = 0; i < n; i++) minions.push_front(Mob{0,0,0,0,0,0});
-	
-	std::cout << "Indique la vida de los esbirros = ";
+
 	for (int i = 0; i < n; i++) std::cin >> minions[i].health;
-
-	std::cout << "Indique el daño de los esbirros = ";
 	for (int i = 0; i < n; i++) std::cin >> minions[i].damage;
-
-	std::cout << "Indique si son CANO = ";
 	for (int i = 0; i < n; i++) std::cin >> minions[i].CANO;
 
 	while(!minions.empty()){
@@ -38,7 +31,7 @@ int main(){
 		minions.front().health -= std::min(heroe.damage, minions.front().health);
 		heroe.health -= minions.front().damage;
 		minions.front().hits += 1;
-		if(minions.front().hits == 2 && minions.front().CANO == 1){
+		if(minions.front().hits == 2 && minions.front().CANO == 1 && minions.front().health > 0){
 			minions.front() = {minions.front().health - 1, minions.front().damage - 1, 0, 0 ,0};
 			minions.push_front(minions.front());
 		}
