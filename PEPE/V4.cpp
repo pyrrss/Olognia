@@ -42,8 +42,8 @@ int main(){
 				heroe.damage += 1;
 			}
 		}
-		if(heroe.health <= 0){
-			std::cout << "RIP mechon" << std::endl;
+		if(heroe.health <= 0 && !minions.empty()){
+			std::cout << heroe.acomulatedDamage << std::endl << "RIP mechon" << std::endl;
 			return 0;
 		}
 	}
