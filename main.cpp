@@ -38,7 +38,7 @@ int main(){
 		hero.health -= currentEnemy.damage;
 		minions.front().hits++;
         
-        // -> se maneja el caso en el que el enemigo es un cano y debe dividirse
+        // -> se maneja el caso en el que el enemigo es un cano y debe dividirse (CONDICION: El CANO no puede dividirse si su vida es 1)
 		if(currentEnemy.hits == 2 && currentEnemy.isCano == 1 && currentEnemy.health > 1) {
 			Mob newEnemy = {currentEnemy.health - 1, currentEnemy.damage - 1, 0, 0 ,0};
 			minions.front() = newEnemy;
