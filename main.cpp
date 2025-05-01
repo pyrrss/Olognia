@@ -39,7 +39,7 @@ int main(){
 		minions.front().hits++;
         
         // -> se maneja el caso en el que el enemigo es un cano y debe dividirse
-		if(currentEnemy.hits == 2 && currentEnemy.isCano == 1 && currentEnemy.health > 0) {
+		if(currentEnemy.hits == 2 && currentEnemy.isCano == 1 && currentEnemy.health > 1) {
 			Mob newEnemy = {currentEnemy.health - 1, currentEnemy.damage - 1, 0, 0 ,0};
 			minions.front() = newEnemy;
             minions.push_front(newEnemy);
